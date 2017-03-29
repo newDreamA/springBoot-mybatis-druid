@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: @profiles@
+  application:
+    name: compute-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.199.131:3306/db1?useUnicode=true&amp;characterEncoding=UTF8&useSSL=true&verifyServerCertificate=false
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 5
+    maxActive: 200
+    minIdle: 5
+    maxWait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    poolPreparedStatements: true
+    validationQuery: SELECT 1 FROM DUAL
+    removeAbandoned: true
+    removeAbandonedTimeout: 180
+    filter: "stat,wall,log4j"
+    connection-properties: "druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+
+server:
+  port: 8002
+mybatis:
+  mapperLocations: classpath*:com.txw.mapper.*/Mapper.xml
+
+
+
+
